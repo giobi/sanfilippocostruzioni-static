@@ -115,6 +115,44 @@ gtag("config", "GT-NSK6XLHT");
 <link rel="icon" href="wp-content/uploads/2023/01/sanfilippo-favicon.png" sizes="192x192" />
 <link rel="apple-touch-icon" href="wp-content/uploads/2023/01/sanfilippo-favicon.png" />
 <meta name="msapplication-TileImage" content="https://sanfilippocostruzioni.it/wp-content/uploads/2023/01/sanfilippo-favicon.png" />
+<style>
+/* Fix mobile menu toggle */
+@media (max-width: 1024px) {
+  .elementor-nav-menu--dropdown.elementor-nav-menu__container {
+    display: none !important;
+  }
+  
+  .elementor-nav-menu--dropdown.elementor-nav-menu__container.elementor-active {
+    display: block !important;
+  }
+  
+  .elementor-menu-toggle {
+    cursor: pointer;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Mobile menu toggle
+  const toggles = document.querySelectorAll('.elementor-menu-toggle');
+  
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      const parent = this.closest('.elementor-nav-menu');
+      const dropdown = parent.querySelector('.elementor-nav-menu--dropdown');
+      
+      if (dropdown) {
+        dropdown.classList.toggle('elementor-active');
+        const isExpanded = dropdown.classList.contains('elementor-active');
+        this.setAttribute('aria-expanded', isExpanded);
+        dropdown.setAttribute('aria-hidden', !isExpanded);
+      }
+    });
+  });
+});
+</script>
+
 </head>
 <body class="home wp-singular page-template-default page page-id-2 wp-custom-logo wp-theme-hello-elementor wp-child-theme-hello-theme-child-master elementor-default elementor-kit-8 elementor-page elementor-page-2">
 
